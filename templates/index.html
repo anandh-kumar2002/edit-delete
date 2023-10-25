@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        <label for="name">name</label>
+        <input type="text" name="name">
+
+        <label for="fund_code">fund_code</label>
+        <input type="number" name="fund_code">
+
+        <label for="investment">investment</label>
+        <input type="number"name="investment">
+
+        <label for="uni_theld">uni_theld</label>
+        <input type="number" name="uni_theld">
+
+        <input type="submit" value="submit">
+    </form>
+    <table>
+        <tr>
+            <th>s.no</th>
+            <th>name</th>
+            <th>fund_house1</th>
+            <th>investment</th>
+            <th>uni_theld</th>
+            <th>nav</th>
+            <th>current_value</th>
+            <th>growth</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {%for i in fd%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.fund_house1}}</td>
+            <td>{{i.investment}}</td>
+            <td>{{i.uni_theld}}</td>
+            <td>{{i.nav}}</td>
+            <td>{{i.current_value}}</td>
+            <td>{{i.growth}}</td>
+            <td><a href="{{url_for('edit',id=loop.index)}}">edit</a></td>
+            <td><a href="{{url_for('delete',id=loop.index)}}">delete</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>
